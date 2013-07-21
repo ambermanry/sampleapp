@@ -14,6 +14,13 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.railo</groupId>
+      <artifactId>railo</artifactId>
+      <type>war</type>
+      <version>4.0.4.001</version>
+      <scope>runtime</scope>
+    </dependency>
   </dependencies>
   <build>
     <finalName>sampleapp</finalName>
