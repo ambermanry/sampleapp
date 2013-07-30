@@ -14,15 +14,49 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
-    <dependency>
+    <!-- <dependency>
       <groupId>org.railo</groupId>
       <artifactId>railo</artifactId>
       <type>war</type>
       <version>4.0.4.001</version>
       <scope>runtime</scope>
-    </dependency>
+    </dependency> -->
   </dependencies>
   <build>
-    <finalName>sampleapp</finalName>
-  </build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>2.3.2</version>
+            <configuration>
+                <source>1.7</source>
+                <target>1.7</target>
+            </configuration>
+        </plugin>
+        
+       	<plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <version>1.7</version>
+            <executions>
+                <execution>
+                	<id>1</id>
+			        <phase>test</phase>
+			        <configuration>
+			        <tasks unless="maven.test.skip">
+			          <ant antfile="${basedir}/build.xml" target="runtests">
+			            <property name="build.compiler" value="extJavac" />
+			          </ant>
+			        </tasks>
+			        </configuration>
+			        <goals>
+			          <goal>run</goal>
+			        </goals>
+     	 		</execution>
+                
+            </executions>
+        </plugin>
+        
+    </plugins>
+</build>
 </project>

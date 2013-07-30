@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main" unless="maven.test.skip">
+  <ant antfile="/Users/amanry/uscis-cf-workspace/sampleapp/build.xml" target="runtests">
+    <property name="build.compiler" value="extJavac"/>
+  </ant>
+</target>
+</project>

@@ -1,0 +1,37 @@
+<project name="MXUnitTask" basedir="." default="runAllTests">
+ 
+
+<property name="output.dir" value="${basedir}/src/main/webapp/test/results" />
+	
+ 
+<target name="runAllTests" depends="runtests,junitreport" description="Main target for running the tests." />
+ 
+<target name="runtests" description="Make output directories and run the MXUnit task">
+	<mkdir dir="${output.dir}" />
+		
+	<taskdef name="mxunittask" classname="org.mxunit.ant.MXUnitAntTask"  classpath="mxunit-ant.jar" />
+	
+	<mxunittask 
+			server="localhost" 
+			port="7777"
+			outputdir="${output.dir}"
+			verbose="true" 
+			haltonerror="true"
+			haltonfailure="true"
+			defaultrunner="/mxunit/runner/HttpAntRunner.cfc">
+			<directory path="/sampleapp/test/mxunit" recurse="false" componentPath="sampleapp.test.mxunit" />
+		</mxunittask>
+</target>
+ 
+	
+<target name="junitreport" description="Create a report for the rest result">
+<mkdir dir="test/junithtml"/>
+<junitreport todir="test/junithtml">
+<fileset dir="test/testresults">
+<include name="*.xml"/>
+</fileset>
+<report format="frames" todir="test/junithtml" styledir="../mxunit/ant/xsl"/>
+</junitreport>
+</target>
+ 
+</project>
