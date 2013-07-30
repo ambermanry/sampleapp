@@ -74,3 +74,35 @@ mvn install:install-file -DgroupId=org.mxunit -DartifactId=mxunit-ant -Dpackagin
 For Continuous Integration using Jenkins, install following:
 - install Jenkins by copying jenkins war to Tomcat webapps directory (NOTE: if you are in a Windows environment, you will need to install Unix Utils)
 - install git (for Windows, you will need to install msysgit)
+
+To Test Jenkins
+-------------------
+- Go to http://localhost:8080/jenkins/
+
+Configure Jenkins
+-------------------
+- Click Manage Jenkins in left menu
+- Manage Plugins
+- Click Available Tab
+- Search for "GitHub Plugin" and check that box
+- Search for "Git Plugin" and check that box
+- Install without restart
+- Now check "Restart Jenkins when installation is complete and no jobs are running"
+- Go To http://localhost:8080/jenkins/configure
+- Under Maven Installations, enter "Maven3" as Name and "/usr/share/maven" as MAVEN_HOME
+ 
+
+
+Create New Job in Jenkins
+-----------------------------
+- Click Create New Job
+- Select Maven 2/3 project
+- Enter sampleapp as name
+- Click OK
+- In GitHub project, enter http://github.com/ambermanry/sampleapp
+- Under SCM, choose Git
+- Enter http://github.com/ambermanry/sampleapp.git for URL
+- Under Repository Brower, select githubweb
+- Under URL enter http://github.com/ambermanry/sampleapp
+- Under Build Triggers, check "Build when a change is pushed to GitHub".  Uncheck others.
+
