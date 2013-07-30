@@ -5,7 +5,7 @@ To install the sample application:
 
 Install servers and unit testing platform:
 ------------------------------------------
-- install a CFML engine (We used Railo in this example http://www.getrailo.org.  This app assumes that Railo runs on port 7777)
+- install a CFML engine (We used Railo in this example http://www.getrailo.org.  This app assumes that Railo runs on port 7777). - I have changed the ports that Railo uses since I have Tomcat running locally as well.  To do this, edit the server.xml in the tomcat/conf directory.  Change the shutdown port to 8775, Connector Port should be 7777.
 - install MXUnit (download zip from mxunit.org.  Copy mxunit folder to {RailoDir}/tomcat/webapps/ROOT
 - install MySQL 
 - install Java 7  (http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html (Java SE Development Kit 7u25).
@@ -90,7 +90,11 @@ Configure Jenkins
 - Now check "Restart Jenkins when installation is complete and no jobs are running"
 - Go To http://localhost:8080/jenkins/configure
 - Under Maven Installations, enter "Maven3" as Name and "/usr/share/maven" as MAVEN_HOME
- 
+- Under Email Notification
+	- Enter smtp server
+	- Enter default User email suffix, enter 
+	- Click advanced button
+	- Choose SMTP Authentication information
 
 
 Create New Job in Jenkins
