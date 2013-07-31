@@ -28,7 +28,7 @@
     <cffunction name="verify51States" returntype="void" access="public" hint="This test verifies that there are 51 states in the recordset to populate the US States dropdown.">
 	  <cfscript>	  
 	  var rs = request.lMan.getStates();
-	  var expected = 51;
+	  var expected = 60;
 	  var result = rs.recordCount;
 	  </cfscript>             
 	  <!--- if you want to "see" your data -- including complex variables, you can pass them to debug() and they will be available to you either in the HTML output or in the Eclipse plugin via rightclick- "Open TestCase results in browser" --->
