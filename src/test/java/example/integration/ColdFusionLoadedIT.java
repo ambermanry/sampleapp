@@ -23,8 +23,9 @@ public class ColdFusionLoadedIT {
 	@Test
 	public void testColdFusionLoadedIT() throws Exception {
 		driver.get(baseUrl + "index.cfm");
+		assertEquals("Welcome to the Railo World!", driver.findElement(By.id("navPrimary")).getText());
 		//assertEquals("coldfusion", driver.findElement(By.xpath("//table/tbody/tr[2]/td")).getText());
-		assertEquals("test","test");
+		//assertEquals("test","test"); 
 	}
 
 	@After
