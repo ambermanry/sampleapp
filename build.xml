@@ -2,15 +2,18 @@
  
 
 <property name="output.dir" value="${basedir}/src/main/webapp/test/results" />
-	
+<property name="deploy.dir" value="/Library/Railo/tomcat/webapps/ROOT/sampleapp" />	
  
 <target name="runAllTests" depends="runtests,junitreport" description="Main target for running the tests." />
  
 <target name="runtests" description="Make output directories and run the MXUnit task">
 	<mkdir dir="${output.dir}" />
-		
-	<taskdef name="mxunittask" classname="org.mxunit.ant.MXUnitAntTask"  classpath="mxunit-ant.jar" />
+	<!-- deploy all files to the railo server-->
+	<copy todir="${deploy.dir}">
+	    <fileset dir="${basedir}/src/main/webapp" />
+	</copy>
 	
+	<taskdef name="mxunittask" classname="org.mxunit.ant.MXUnitAntTask"  classpath="mxunit-ant.jar" />
 	<mxunittask 
 			server="localhost" 
 			port="7777"
